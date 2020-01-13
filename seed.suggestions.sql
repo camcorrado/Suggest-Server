@@ -21,6 +21,7 @@ VALUES
     true,
     'Thu Jan 09 2020',
     169
+  ),
   (
     3,
     200,
@@ -31,7 +32,7 @@ VALUES
     true,
     'Tue Jan 07 2020',
     122
-  )
+  ),
   (
     4,
     300,
@@ -42,7 +43,7 @@ VALUES
     false,
     null,
     107
-  )          
+  ),       
   (
     5,
     200,
@@ -53,7 +54,7 @@ VALUES
     true,
     'Thu Jan 09 2020',
     121
-  )          
+  ),          
   (
     6,
     400,
@@ -64,7 +65,7 @@ VALUES
     false,
     null,
     62
-  )
+  ),
   (
     7,
     500,
@@ -75,7 +76,7 @@ VALUES
     false,
     null,
     72
-  )
+  ),
   (
     8,
     100,
@@ -86,7 +87,7 @@ VALUES
     false,
     null,
     29
-  )          
+  ),          
   (
     9,
     600,
@@ -97,7 +98,7 @@ VALUES
     false,
     true,
     103
-  )
+  ),
   (
     10,
     700,
