@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS suggestion;
+DROP TABLE IF EXISTS suggestions;

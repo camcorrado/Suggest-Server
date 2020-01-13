@@ -1,0 +1,122 @@
+function makeSuggestionsArray() {
+  return [
+    {
+      'id': 1,
+      'userId': 100,
+      'title': 'Fridays At Home',
+      'content': 'I think we should work from home on Fridays!',
+      'date_published': 'Fri Jan 03 2020',
+      'date_modified': 'Tue Jan 07 2020',
+      'approved': false,
+      'date_approved': null,
+      'upvotes': 52,
+  },
+  {
+      'id': 2,
+      'userId': 100,
+      'title': 'Second Fridge',
+      'content': 'I think we should have two fridges: one for municiple food and another for private food!',
+      'date_published': 'Mon Jan 06 2020',
+      'date_modified': null,
+      'approved': true,
+      'date_approved': 'Thu Jan 09 2020',
+      'upvotes': 169,
+  },
+  {
+      'id': 3,
+      'userId': 200,
+      'title': 'More PTO',
+      'content': 'We need more vacation time!',
+      'date_published': 'Mon Jan 06 2020',
+      'date_modified': null,
+      'approved': true,
+      'date_approved': 'Tue Jan 07 2020',
+      'upvotes': 122,
+  },
+  {
+      'id': 4,
+      'userId': 300,
+      'title': 'Even More PTO',
+      'content': 'We need even more vacation time!',
+      'date_published': 'Wed Jan 08 2020',
+      'date_modified': null,
+      'approved': false,
+      'date_approved': null,
+      'upvotes': 107,
+  }
+  ,
+  {
+      'id': 5,
+      'userId': 200,
+      'title': 'Holiday Party',
+      'content': "Let's celebrate the holidays next year to boost morale!",
+      'date_published': 'Wed Jan 08 2020',
+      'date_modified': null,
+      'approved': true,
+      'date_approved': 'Thu Jan 09 2020',
+      'upvotes': 121,
+  }
+  ,
+  {
+      'id': 6,
+      'userId': 400,
+      'title': 'SodaStream',
+      'content': 'There should be an office SodaStream!',
+      'date_published': 'Wed Jan 08 2020',
+      'date_modified': null,
+      'approved': false,
+      'date_approved': null,
+      'upvotes': 62,
+  }
+  ,
+  {
+      'id': 7,
+      'userId': 500,
+      'title': 'Gaming Lounge',
+      'content': 'A gaming lounge would be awesome for morale and during break time!',
+      'date_published': 'Wed Jan 08 2020',
+      'date_modified': 'Thu Jan 09 2020',
+      'approved': false,
+      'date_approved': null,
+      'upvotes': 72,
+  }
+  ,
+  {
+      'id': 8,
+      'userId': 100,
+      'title': 'Upgrade to Standing Desks',
+      'content': 'Sitting all day is bad for your health!',
+      'date_published': 'Thu Jan 09 2020',
+      'date_modified': null,
+      'approved': false,
+      'date_approved': null,
+      'upvotes': 29,
+  }
+  ,
+  {
+      'id': 9,
+      'userId': 600,
+      'title': 'Office Gym',
+      'content': 'We should install a gym to workout during breaks!',
+      'date_published': 'Thu Jan 09 2020',
+      'date_modified': null,
+      'approved': false,
+      'date_approved': true,
+      'upvotes': 103,
+  }
+  ,
+  {
+      'id': 10,
+      'userId': 700,
+      'title': 'Genderless Bathrooms',
+      'content': 'Get with the times! Gender is a social construct.',
+      'date_published': 'Thu Jan 09 2020',
+      'date_modified': null,
+      'approved': true,
+      'date_approved': 'Thu Jan 09 2020',
+      'upvotes': 151,
+  }
+  ]
+}
+
+module.exports = makeSuggestionsArray

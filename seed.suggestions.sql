@@ -1,4 +1,4 @@
-INSERT INTO Suggestion (id, userId, title, content, date_published, date_modified, approved, date_approved, upvotes)
+INSERT INTO suggestions (id, userId, title, content, date_published, date_modified, approved, date_approved, upvotes)
 VALUES
   (
     1, 

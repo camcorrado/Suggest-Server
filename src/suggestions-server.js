@@ -1,27 +1,27 @@
   
 const SuggestionsService = {
     getAllSuggestions(knex) {
-      return knex.select('*').from('Suggestion')
+      return knex.select('*').from('suggestions')
     },
     insertSuggestions(knex, newSuggestion) {
       return knex
         .insert(newSuggestion)
-        .into('Suggestion')
+        .into('suggestions')
         .returning('*')
         .then(rows => {
           return rows[0]
         })
     },
     getById(knex, id) {
-      return knex.from('Suggestion').select('*').where('id', id).first()
+      return knex.from('suggestions').select('*').where('id', id).first()
     },
     deleteSuggestion(knex, id) {
-      return knex('Suggestion')
+      return knex('suggestions')
         .where({ id })
         .delete()
     },
     updateSuggestion(knex, id, newSuggestionFields) {
-      return knex('Suggestion')
+      return knex('suggestions')
         .where({ id })
         .update(newSuggestionFields)
     },

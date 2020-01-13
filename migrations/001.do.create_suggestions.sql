@@ -1,4 +1,4 @@
-CREATE TABLE Suggestion (
+CREATE TABLE suggestions (
     id INTEGER PRIMARY KEY,
     userId INTEGER NOT NULL,
     title TEXT NOT NULL,
