@@ -14,13 +14,7 @@ app.use(morgan((NODE_ENV === 'production') ? 'tiny' : 'common', {
 app.use(cors())
 app.use(helmet())
 
-app.use(cors())
-
 app.use('/api/suggestions', suggestionRouter)
-
-app.get('/', (req, res) => {
-  res.send('Welcome to Noteful!')
-})
 
 app.use(function errorHandler(error, req, res, next) {
   let response
