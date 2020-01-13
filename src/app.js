@@ -4,19 +4,26 @@ const morgan = require('morgan')
 const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
+const suggestionRouter = require('./suggestions')
 
 const app = express()
 
-const morganOption = (NODE_ENV === 'production')
-  ? 'tiny'
-  : 'common'
-
-app.use(morgan(morganOption))
-app.use(helmet())
+app.use(morgan((NODE_ENV === 'production') ? 'tiny' : 'common', {
+  skip: () => NODE_ENV === 'test'
+}))
 app.use(cors())
+app.use(helmet())
+
+app.use(
+  cors({
+      origin: CLIENT_ORIGIN
+  })
+)
+
+app.use('/api/suggestions', suggestionRouter)
 
 app.get('/', (req, res) => {
-  res.send('Hello, world!')
+  res.send('Welcome to Noteful!')
 })
 
 app.use(function errorHandler(error, req, res, next) {
