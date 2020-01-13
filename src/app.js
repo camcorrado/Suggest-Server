@@ -14,11 +14,7 @@ app.use(morgan((NODE_ENV === 'production') ? 'tiny' : 'common', {
 app.use(cors())
 app.use(helmet())
 
-app.use(
-  cors({
-      origin: CLIENT_ORIGIN
-  })
-)
+app.use(cors())
 
 app.use('/api/suggestions', suggestionRouter)
 
