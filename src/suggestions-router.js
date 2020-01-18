@@ -7,7 +7,7 @@ const jsonParser = express.json()
 
 const serializeSuggestion = suggestion => ({
   id: suggestion.id,
-  userId: suggestion.userId,
+  userid: suggestion.userid,
   title: suggestion.title,
   content: suggestion.content,
   date_published: suggestion.date_published,
@@ -28,8 +28,8 @@ suggestionsRouter
       .catch(next)
   })
   .post(jsonParser, (req, res, next) => {
-    const { id, userId, title, content, date_published, date_modified, approved, date_approved, upvotes } = req.body
-    const newSuggestion = { id, userId, title, content, date_published, date_modified, approved, date_approved, upvotes }
+    const { id, userid, title, content, date_published, date_modified, approved, date_approved, upvotes } = req.body
+    const newSuggestion = { id, userid, title, content, date_published, date_modified, approved, date_approved, upvotes }
 
     for (const [key, value] of Object.entries(newSuggestion))
       if (value == null)
@@ -81,14 +81,14 @@ suggestionsRouter
       .catch(next)
   })
   .patch(jsonParser, (req, res, next) => {
-    const { id, userId, title, content, date_published, date_modified, approved, date_approved, upvotes } = req.body
-    const suggestionToUpdate = { id, userId, title, content, date_published, date_modified, approved, date_approved, upvotes }
+    const { id, userid, title, content, date_published, date_modified, approved, date_approved, upvotes } = req.body
+    const suggestionToUpdate = { id, userid, title, content, date_published, date_modified, approved, date_approved, upvotes }
 
     const numberOfValues = Object.values(suggestionToUpdate).filter(Boolean).length
     if (numberOfValues === 0)
       return res.status(400).json({
         error: {
-          message: `Request body must contain either 'id', 'userId', 'title', 'content', 'date_published', 'date_modified', 'approved', 'date_approved', 'upvotes'`
+          message: `Request body must contain either 'id', 'userid', 'title', 'content', 'date_published', 'date_modified', 'approved', 'date_approved', 'upvotes'`
         }
       })
 

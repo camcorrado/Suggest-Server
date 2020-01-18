@@ -78,12 +78,19 @@ describe('Suggestions Endpoints', function() {
 
   describe(`POST /api/suggestions`, () => {
 
-    const requiredFields = ['title', 'content']
+    const requiredFields = ['id', 'userid', 'title', 'content', 'date_published', 'date_modified', 'approved', 'date_approved', 'upvotes']
 
     requiredFields.forEach(field => {
       const newSuggestion = {
+        id: 'Test new suggestion id',
+        userid: 'Test new suggestion userid',
         title: 'Test new suggestion title',
-        content: 'Test new suggestion content'
+        content: 'Test new suggestion content',
+        date_published: 'Test new date_published',
+        date_modified: 'Test date modified',
+        approved: 'Test new approved',
+        date_approved: 'Test date approved',
+        upvotes: 'Test new upvotes'
       }
 
       it(`responds with 400 and an error message when the '${field}' is missing`, () => {
@@ -180,7 +187,7 @@ describe('Suggestions Endpoints', function() {
           .send({ irrelevantField: 'foo' })
           .expect(400, {
             error: {
-              message: `Request body must contain either 'title' or 'content'`
+              message: "Request body must contain either 'id', 'userid', 'title', 'content', 'date_published', 'date_modified', 'approved', 'date_approved', 'upvotes'"
             }
           })
       })
