@@ -17,7 +17,7 @@ describe('Suggestions Endpoints', function() {
 
   after('disconnect from db', () => db.destroy())
 
-  before('clean the table', () => db('suggestions').truncate())
+  before('clean the table', () => db.raw('TRUNCATE suggestions RESTART IDENTITY CASCADE'))
 
   afterEach('cleanup',() => db.raw('TRUNCATE suggestions RESTART IDENTITY CASCADE'))
 
