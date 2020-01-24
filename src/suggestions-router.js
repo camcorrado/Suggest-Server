@@ -1,3 +1,4 @@
+const moment = require('moment')
 const path = require('path')
 const express = require('express')
 const SuggestionsService = require('./suggestions-server')
@@ -10,10 +11,10 @@ const serializeSuggestion = suggestion => ({
   userid: suggestion.userid,
   title: suggestion.title,
   content: suggestion.content,
-  date_published: suggestion.date_published,
-  date_modified: suggestion.date_modified,
+  date_published: moment(suggestion.date_published).format('ddd MMM DD YYYY'),
+  date_modified: suggestion.date_modified === null ? null : moment(suggestion.date_modified).format('ddd MMM DD YYYY'),
   approved: suggestion.approved,
-  date_approved: suggestion.date_approved,
+  date_approved: suggestion.date_approved === null ? null : moment(suggestion.date_approved).format('ddd MMM DD YYYY'),
   upvotes: suggestion.upvotes
 })
 

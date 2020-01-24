@@ -3,9 +3,9 @@ CREATE TABLE suggestions (
     userid INTEGER NOT NULL,
     title TEXT NOT NULL,
     content TEXT NOT NULL,
-    date_published TIMESTAMP DEFAULT now() NOT NULL,
-    date_modified TIMESTAMP DEFAULT null,
+    date_published DATE DEFAULT now() NOT NULL,
+    date_modified DATE,
     approved BOOLEAN NOT NULL,
-    date_approved TIMESTAMP DEFAULT null,
+    date_approved DATE,
     upvotes INTEGER NOT NULL
 );
