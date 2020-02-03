@@ -48,7 +48,7 @@ VALUES
     5,
     200,
     'Holiday Party',
-    'We should celebrate the holidays next year to boost morale!',
+    'Let us should celebrate the holidays next year to boost morale!',
     'Wed Jan 08 2020',
     null,
     true,
