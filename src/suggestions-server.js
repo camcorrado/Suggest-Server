@@ -3,7 +3,7 @@ const SuggestionsService = {
     getAllSuggestions(knex) {
       return knex.select('*').from('suggestions')
     },
-    insertSuggestions(knex, newSuggestion) {
+    insertSuggestion(knex, newSuggestion) {
       return knex
         .insert(newSuggestion)
         .into('suggestions')

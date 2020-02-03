@@ -32,8 +32,7 @@ suggestionsRouter
     const { id, userid, title, content, date_published, date_modified, approved, date_approved, upvotes } = req.body
     const newSuggestion = { id, userid, title, content, date_published, date_modified, approved, date_approved, upvotes }
 
-    for (const [key, value] of Object.entries(newSuggestion))
-      SuggestionsService.insertSuggestion(
+    SuggestionsService.insertSuggestion(
       req.app.get('db'),
       newSuggestion
     )

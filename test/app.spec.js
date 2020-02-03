@@ -1,5 +1,7 @@
 const knex = require('knex')
 const app = require('../src/app')
+const { expect } = require('chai')
+const supertest = require('supertest')
 const makeSuggestionsArray = require('./suggestions.fixutes')
 
 describe('Suggestions Endpoints', function() {
@@ -77,20 +79,49 @@ describe('Suggestions Endpoints', function() {
   })
 
   describe(`POST /api/suggestions`, () => {
+    it(`creates a suggestion, responding with 201 and the new suggestion`, () => {
+      const newSuggestion = {
+        id: 1234567,
+        userid: 1234567,
+        title: 'Test new suggestion title',
+        content: 'Test new suggestion content',
+        date_published: new Date(),
+        approved: true,
+        upvotes: 1234567
+      }
+      return supertest(app)
+        .post('/api/suggestions')
+        .send(newSuggestion)
+        .expect(201)
+        .expect(res => {
+          expect(res.body.id).to.eql(newSuggestion.id)
+          expect(res.body.userid).to.eql(newSuggestion.userid)
+          expect(res.body.title).to.eql(newSuggestion.title)
+          expect(res.body.content).to.eql(newSuggestion.content)
+          expect(res.body.approved).to.eql(newSuggestion.approved)
+          expect(res.body.upvotes).to.eql(newSuggestion.upvotes)
+          const expectedDatePublished = new Intl.DateTimeFormat('en-US').format(new Date())
+          const actualDatePublished = new Intl.DateTimeFormat('en-US').format(new Date(res.body.date_published))
+          expect(actualDatePublished).to.eql(expectedDatePublished)
+        })
+        .then(res =>
+          supertest(app)
+            .get(`/api/suggestions/${res.body.id}`)
+            .expect(res.body)
+        )
+    })
 
-    const requiredFields = ['id', 'userid', 'title', 'content', 'date_published', 'date_modified', 'approved', 'date_approved', 'upvotes']
+    const requiredFields = ['id', 'userid', 'title', 'content', 'date_published', 'approved', 'upvotes']
 
     requiredFields.forEach(field => {
       const newSuggestion = {
-        id: 'Test new suggestion id',
-        userid: 'Test new suggestion userid',
+        id: 1234567,
+        userid: 1234567,
         title: 'Test new suggestion title',
         content: 'Test new suggestion content',
-        date_published: 'Test new date_published',
-        date_modified: 'Test date modified',
-        approved: 'Test new approved',
-        date_approved: 'Test date approved',
-        upvotes: 'Test new upvotes'
+        date_published: new Date(),
+        approved: true,
+        upvotes: 1234567
       }
 
       it(`responds with 400 and an error message when the '${field}' is missing`, () => {
