@@ -33,11 +33,7 @@ suggestionsRouter
     const newSuggestion = { id, userid, title, content, date_published, date_modified, approved, date_approved, upvotes }
 
     for (const [key, value] of Object.entries(newSuggestion))
-      if (value == null)
-        return res.status(400).json({
-          error: { message: `Missing '${key}' in request body` }
-        })
-        SuggestionsService.insertSuggestion(
+      SuggestionsService.insertSuggestion(
       req.app.get('db'),
       newSuggestion
     )
