@@ -29,8 +29,14 @@ suggestionsRouter
       .catch(next)
   })
   .post(jsonParser, (req, res, next) => {
-    const { id, userid, title, content, date_published, date_modified, approved, date_approved, upvotes } = req.body
-    const newSuggestion = { id, userid, title, content, date_published, date_modified, approved, date_approved, upvotes }
+    const { id, userid, title, content, date_published, approved, upvotes } = req.body
+    const newSuggestion = { id, userid, title, content, date_published, approved, upvotes }
+
+    for (const [key, value] of Object.entries(newSuggestion))
+      if (value == null)
+        return res.status(400).json({
+          error: { message: `Missing '${key}' in request body` }
+        })
 
     SuggestionsService.insertSuggestion(
       req.app.get('db'),

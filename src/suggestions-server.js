@@ -1,5 +1,4 @@
-  
-const SuggestionsService = {
+  const SuggestionsService = {
     getAllSuggestions(knex) {
       return knex.select('*').from('suggestions')
     },
