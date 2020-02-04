@@ -1,7 +1,5 @@
 const knex = require('knex')
 const app = require('../src/app')
-const { expect } = require('chai')
-const supertest = require('supertest')
 const makeSuggestionsArray = require('./suggestions.fixutes')
 
 describe('Suggestions Endpoints', function() {
@@ -19,7 +17,7 @@ describe('Suggestions Endpoints', function() {
 
   after('disconnect from db', () => db.destroy())
 
-  before('clean the table', () => db.raw('TRUNCATE suggestions RESTART IDENTITY CASCADE'))
+  before('clean the table', () => db('suggestions').truncate())
 
   afterEach('cleanup',() => db.raw('TRUNCATE suggestions RESTART IDENTITY CASCADE'))
 
@@ -85,7 +83,7 @@ describe('Suggestions Endpoints', function() {
         userid: 1234567,
         title: 'Test new suggestion title',
         content: 'Test new suggestion content',
-        date_published: new Date(),
+        date_published: 'Fri Jan 03 2020',
         approved: true,
         upvotes: 1234567
       }
@@ -98,11 +96,10 @@ describe('Suggestions Endpoints', function() {
           expect(res.body.userid).to.eql(newSuggestion.userid)
           expect(res.body.title).to.eql(newSuggestion.title)
           expect(res.body.content).to.eql(newSuggestion.content)
+          expect(res.body.date_published).to.eql(newSuggestion.date_published)
           expect(res.body.approved).to.eql(newSuggestion.approved)
           expect(res.body.upvotes).to.eql(newSuggestion.upvotes)
-          const expectedDatePublished = new Intl.DateTimeFormat('en-US').format(new Date())
-          const actualDatePublished = new Intl.DateTimeFormat('en-US').format(new Date(res.body.date_published))
-          expect(actualDatePublished).to.eql(expectedDatePublished)
+          expect(res.headers.location).to.eql(`/api/suggestions/${res.body.id}`)
         })
         .then(res =>
           supertest(app)
@@ -119,8 +116,8 @@ describe('Suggestions Endpoints', function() {
         userid: 1234567,
         title: 'Test new suggestion title',
         content: 'Test new suggestion content',
-        date_published: new Date(),
-        approved: true,
+        date_published: 'Fri Jan 03 2020',
+        approved: false,
         upvotes: 1234567
       }
 
