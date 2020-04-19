@@ -91,6 +91,7 @@ describe('Suggestions Endpoints', function() {
         .send(newSuggestion)
         .expect(201)
         .expect(res => {
+          expect(res.body).to.have.property('id')
           expect(res.body.userid).to.eql(newSuggestion.userid)
           expect(res.body.title).to.eql(newSuggestion.title)
           expect(res.body.content).to.eql(newSuggestion.content)
@@ -106,7 +107,7 @@ describe('Suggestions Endpoints', function() {
         )
     })
 
-    const requiredFields = ['id', 'userid', 'title', 'content', 'date_published', 'approved', 'upvotes']
+    const requiredFields = ['userid', 'title', 'content', 'date_published', 'approved', 'upvotes']
 
     requiredFields.forEach(field => {
       const newSuggestion = {

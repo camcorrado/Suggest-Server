@@ -29,8 +29,8 @@ suggestionsRouter
       .catch(next)
   })
   .post(jsonParser, (req, res, next) => {
-    const { id, userid, title, content, date_published, approved, upvotes } = req.body
-    const newSuggestion = { id, userid, title, content, date_published, approved, upvotes }
+    const { userid, title, content, date_published, approved, upvotes } = req.body
+    const newSuggestion = { userid, title, content, date_published, approved, upvotes }
 
     for (const [key, value] of Object.entries(newSuggestion))
       if (value == null)
