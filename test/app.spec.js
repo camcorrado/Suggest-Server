@@ -79,7 +79,6 @@ describe('Suggestions Endpoints', function() {
   describe(`POST /api/suggestions`, () => {
     it(`creates a suggestion, responding with 201 and the new suggestion`, () => {
       const newSuggestion = {
-        id: 1234567,
         userid: 1234567,
         title: 'Test new suggestion title',
         content: 'Test new suggestion content',
@@ -92,7 +91,6 @@ describe('Suggestions Endpoints', function() {
         .send(newSuggestion)
         .expect(201)
         .expect(res => {
-          expect(res.body.id).to.eql(newSuggestion.id)
           expect(res.body.userid).to.eql(newSuggestion.userid)
           expect(res.body.title).to.eql(newSuggestion.title)
           expect(res.body.content).to.eql(newSuggestion.content)
@@ -112,7 +110,6 @@ describe('Suggestions Endpoints', function() {
 
     requiredFields.forEach(field => {
       const newSuggestion = {
-        id: 1234567,
         userid: 1234567,
         title: 'Test new suggestion title',
         content: 'Test new suggestion content',
