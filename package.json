@@ -15,30 +15,31 @@
   },
   "keywords": [],
   "engines": {
-    "node": "10.11.0"
+    "node": "16.15.1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^8.6.0",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "helmet": "^3.23.3",
+    "helmet": "^5.1.0",
     "heroku": "^7.60.2",
-    "knex": "^0.20.15",
+    "knex": "^2.1.0",
     "moment": "^2.29.3",
     "morgan": "^1.10.0",
-    "pg": "^7.18.2",
-    "postgrator": "^3.11.1",
-    "sqlite3": "^4.2.0",
-    "uuid": "^3.4.0"
+    "pg": "^8.7.3",
+    "postgrator": "^7.1.0",
+    "sqlite3": "^5.0.8",
+    "strip-eof": "^2.0.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "chai": "^4.3.6",
-    "mocha": "^6.2.3",
+    "mocha": "^10.0.0",
     "nodemon": "^2.0.16",
-    "postgrator-cli": "^3.2.0",
-    "supertest": "^4.0.2"
+    "postgrator-cli": "^6.0.0",
+    "supertest": "^6.2.3"
   },
   "repository": {
     "type": "git",
